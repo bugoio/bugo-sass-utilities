@@ -11,7 +11,7 @@
       @content;
     }
   }
- 
+
   // If the key doesn't exist in the map
   @else {
     @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
@@ -64,18 +64,16 @@
   @if $right != false and is_numeric( $right ) == true{
     @include ms-respond( #{$property}-right, $right );
   } @else if $right != false and is_numeric( $right ) == false{
-    #{$property}-right: $right;  
+    #{$property}-right: $right;
   } @else {
-    #{$property}-right: 0;  
+    #{$property}-right: 0;
   }
 }
 
 @mixin space-element-y( $property, $top, $bottom ){
   // top
-  @if $top != false and is_numeric( $top ){
+  @if $top != false {
     @include ms-respond( #{$property}-top, $top );
-  } @else if $top != false and is_numeric( $top ) == false{
-    #{$property}-top: $top;
   } @else {
     #{$property}-top: 0;
   }
@@ -84,9 +82,9 @@
   @if $bottom != false and is_numeric( $bottom ){
     @include ms-respond( #{$property}-bottom, $bottom );
   } @else if $bottom != false and is_numeric( $bottom ) == false{
-    #{$property}-bottom: $bottom;  
+    #{$property}-bottom: $bottom;
   } @else {
-    #{$property}-bottom: 0;  
+    #{$property}-bottom: 0;
   }
 }
 
