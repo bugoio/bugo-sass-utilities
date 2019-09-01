@@ -1,0 +1,47 @@
+//Vendors
+@import "vendors/mathsass/math";
+@import "vendors/modularscale/modularscale";
+
+@import "functions";
+@import "mixins";
+
+/**
+*
+* Hugo Commands
+*
+* This section can be evaluated by Hugo at build. Always provide a default.
+* Hugo can only process the commands in this file. All imported files are ignored
+* due to a system limitation.
+**/
+
+/**
+*
+* Theme Color Variables
+* Assigns global colors variables for use elsewhere.
+*
+**/
+
+$primary:       {{ .Site.Data.styles.theme_colors.primary | default "#AC5E0D" }} !default;
+$secondary:     {{ .Site.Data.styles.theme_colors.secondary | default "#536F48" }} !default;
+$accent-1:      {{ .Site.Data.styles.theme_colors.accent_1 | default "#FFDE2F" }};
+$accent-2:      {{ .Site.Data.styles.theme_colors.accent_2 | default "#5F336A" }};
+$light:         {{ .Site.Data.styles.theme_colors.light | default "#FFF5E7" }} !default;
+$dark:          {{ .Site.Data.styles.theme_colors.dark | default "#5B5551" }} !default;
+$white:         {{ .Site.Data.styles.theme_colors.white | default "#FFFCF6" }} !default;
+$black:         {{ .Site.Data.styles.theme_colors.black | default "#252524" }} !default;
+$success:       {{ .Site.Data.styles.theme_colors.success | default "#28a745" }} !default;
+$info:          {{ .Site.Data.styles.theme_colors.info | default "#17a2b8" }} !default;
+$warning:       {{ .Site.Data.styles.theme_colors.warning | default "#ffc107" }} !default;
+$danger:        {{ .Site.Data.styles.theme_colors.danger | default "#dc3545" }} !default;
+
+
+/**
+*
+* Generate theme color mixes
+* returns a class for use with block level eleemnts
+*
+**/
+
+{{ range $index, $mix := .Site.Data.styles.color_mixes }}
+  @include color-mixes( {{ $mix.name | anchorize }}, {{ $mix.text_color | anchorize }}, {{ $mix.background_color | anchorize }}, {{ $mix.heading_color | anchorize }} );
+{{ end }}
