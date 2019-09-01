@@ -72,20 +72,8 @@
 
 @mixin space-element-y( $property, $top, $bottom ){
   // top
-  @if $top != false {
-    @include ms-respond( #{$property}-top, $top );
-  } @else {
-    #{$property}-top: 0;
-  }
-
-  // bottom
-  @if $bottom != false and is_numeric( $bottom ){
-    @include ms-respond( #{$property}-bottom, $bottom );
-  } @else if $bottom != false and is_numeric( $bottom ) == false{
-    #{$property}-bottom: $bottom;
-  } @else {
-    #{$property}-bottom: 0;
-  }
+  @include ms-respond( #{$property}-top, $top );
+  @include ms-respond( #{$property}-bottom, $bottom );
 }
 
 @mixin grid-gaps( $column: false, $row: false ){
