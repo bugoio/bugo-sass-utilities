@@ -61,7 +61,7 @@
   }
 
   // right
-  @if $right != false and is_numeric( $right ) == true{
+  @if $right != false and is_numeric( $right ){
     @include ms-respond( #{$property}-right, $right );
   } @else if $right != false and is_numeric( $right ) == false{
     #{$property}-right: $right;
