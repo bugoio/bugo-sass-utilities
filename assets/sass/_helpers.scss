@@ -1,4 +1,4 @@
-.unstyled-list, 
+.unstyled-list,
 .list-unstyled {
   margin: 0;
   padding: 0;
@@ -52,4 +52,21 @@
 
 .text-justify {
   text-align: justify !important;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
 }
