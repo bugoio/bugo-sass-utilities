@@ -43,3 +43,9 @@ $link-text-color-dark: $primary;
     color: $color;
   }
 }
+
+:root{
+  @each $name, $color in $theme-colors {
+      --#{$name}: #{$color};
+  }
+}
