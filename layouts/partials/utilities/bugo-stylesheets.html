@@ -1,0 +1,15 @@
+{{ $env := hugo.Environment }}
+<!-- Get bugo-utilities.scss first. It contains most of the vendors & global styles set by Hugo config Params. -->
+{{ $files := slice ( resources.Get "sass/_bugo-utilities.scss" ) }}
+<!-- Get all scss files not starting with "_". All the major files -->
+{{ $components := resources.Match "sass/[!_]*.scss" }}
+<!-- Add all components to the files array -->
+{{ range $components }}
+  {{ $files = $files | append . }}
+{{ end }}
+<!-- concatenate all the files togther -->
+{{ $scssConcat := $files | resources.Concat "sass/concat-scss.scss" }}
+<!-- process all files as Hugo templates then process to CSS -->
+
+{{ $scssProcessed := $scssConcat | resources.ExecuteAsTemplate "components-processed.scss" . | resources.ToCSS }}
+{{ return  $scssProcessed.Permalink }}
