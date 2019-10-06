@@ -19,31 +19,56 @@
   }
 }
 
-@mixin responsive-property( $values, $property ) {
-  @each $breakpoint, $value in $values {
-    @include respond-to( $breakpoint ){
-      #{$property}: $value;
-    }
+@mixin set-margin($top:false,$right:false,$bottom:false,$left:false){
+  @if $top != false and is_numeric( $top ){
+    @include ms-respond( margin-top, $top );
+  } @else {
+    margin-top: 0;
+  }
+  @if $right != false and is_numeric( $right ){
+    @include ms-respond( margin-right, $right );
+  } @else {
+    margin-right: 0;
+  }
+  @if $bottom != false and is_numeric( $bottom ){
+    @include ms-respond( margin-bottom, $bottom );
+  } @else {
+    margin-bottom: 0;
+  }
+  @if $left != false and is_numeric( $left ){
+    @include ms-respond( margin-left, $left );
+  } @else {
+    margin-left: 0;
   }
 }
 
-@mixin heading-size( $el, $heading, $multiplier: 1 ) {
-  #{$el} {
-    @each $breakpoint, $value in $heading {
-      @include respond-to( $breakpoint ){
-        @include ms-respond( font-size, $value * $multiplier );
-      }
-    }
+@mixin set-padding($top:false,$right:false,$bottom:false,$left:false){
+  @if $top != false and is_numeric( $top ){
+    @include ms-respond( padding-top, $top );
+  } @else {
+    padding-top: 0;
+  }
+  @if $right != false and is_numeric( $right ){
+    @include ms-respond( padding-right, $right );
+  } @else {
+    padding-right: 0;
+  }
+  @if $bottom != false and is_numeric( $bottom ){
+    @include ms-respond( padding-bottom, $bottom );
+  } @else {
+    padding-bottom: 0;
+  }
+  @if $left != false and is_numeric( $left ){
+    @include ms-respond( padding-left, $left );
+  } @else {
+    padding-left: 0;
   }
 }
 
-@mixin aspect-ratio( $hero ) {
-  @each $breakpoint, $value in $hero {
-    @include respond-to( $breakpoint ){
-      padding-top: $value;
-    }
-  }
-}
+
+/**
+ * Deprecated
+ **/
 
 @mixin space-element( $property, $x, $y ){
   @include space-element-x( $property, $x, $x );
@@ -130,3 +155,30 @@
     }
   }
 }
+
+@mixin responsive-property( $values, $property ) {
+  @each $breakpoint, $value in $values {
+    @include respond-to( $breakpoint ){
+      #{$property}: $value;
+    }
+  }
+}
+
+@mixin heading-size( $el, $heading, $multiplier: 1 ) {
+  #{$el} {
+    @each $breakpoint, $value in $heading {
+      @include respond-to( $breakpoint ){
+        @include ms-respond( font-size, $value * $multiplier );
+      }
+    }
+  }
+}
+
+@mixin aspect-ratio( $hero ) {
+  @each $breakpoint, $value in $hero {
+    @include respond-to( $breakpoint ){
+      padding-top: $value;
+    }
+  }
+}
+
