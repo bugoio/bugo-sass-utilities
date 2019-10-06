@@ -39,8 +39,17 @@ $link-text-color-dark: $primary;
     background-color: $color;
   }
 
-  .text-#{name}{
+  .text-#{$name}{
     color: $color;
+  }
+}
+
+@each $fname, $fcolor in $theme-colors {
+  @each $bgname, $bgcolor in $theme-colors {
+    .#{$fname}-on-#{$bgname}{
+      color: $fcolor;
+      background-color: $bgcolor;
+    }
   }
 }
 
