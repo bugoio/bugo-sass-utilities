@@ -35,6 +35,11 @@ module:
 
 #### bugo-sass-variables
 
+Add the partial to your baseOf.html template.
+```
+{{ partial "bugo-sass-utilities" . }}
+```
+
 Creates a variables file in your local build folder from all files labeled ```*-vars.scss``` at build time.
 
 * Location: ```/public/site-variables-example.scss```
