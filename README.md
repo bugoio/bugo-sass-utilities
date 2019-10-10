@@ -37,7 +37,7 @@ module:
 
 ##### Overview
 
-This template consolidates all SASS variables stored in your project's assets folders. Since this runs at build time it uses Hugo's "consoloidated" assets directory. 
+This partial consolidates all SASS variables stored in your project's assets folders. Since this runs at build time it uses Hugo's "consoloidated" assets directory. 
 
 Files must be named one of two ways to be included.
 
@@ -46,12 +46,31 @@ Files must be named one of two ways to be included.
 
 ##### Using the partial template
 
-Add the partial to your ```/layouts/_default/baseof.html``` template. Anywhere will do. This partial does not output any markup.
-```
-{{ partial "bugo-sass-utilities" . }}
+Add the partial to your ```/layouts/_default/baseof.html``` template. Anywhere will do. This partial does not output any markup. The partial call below is included in the bugo-stylesheets partial. If you're already using bugo-stylesheets, you don't need to call it again.
+
+```GO
+{{ partial "utilities/bugo-sass-utilities" . }}
 ```
 
 Creates a variables file in your local build folder from all files labeled ```*-vars.scss``` at build time.
 
 * Location: ```/public/site-variables-example.scss```
 * includes ```**/*-global-variables.scss``` first
+
+#### bugo-stylesheets
+
+##### Overview
+
+This partial returns a permalink to a consolidated CSS resource.
+
+* Processes ```.scss`` files in Hugo's assetDir (```/assets`` by default)
+* Excludes SASS partials (```_*.scss```)
+* Hugo Environment sensitive. Not NODE_ENV!
+  * production - compressed, no source maps
+  * All others - expanded with source maps
+
+##### Using the partial template
+```GO
+{{ $stylesheet := partial "utilities/bugo-stylesheets" . }}
+<link rel="stylesheet" href="{{ $stylesheet }}" media="screen" />
+```
