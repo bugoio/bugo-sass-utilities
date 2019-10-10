@@ -35,7 +35,7 @@ module:
 
 #### bugo-sass-variables
 
-Add the partial to your baseOf.html template.
+Add the partial to your ```/layouts/_default/baseof.html``` template. Anywhere will do. This template does not output any markup.
 ```
 {{ partial "bugo-sass-utilities" . }}
 ```
