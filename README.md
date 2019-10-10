@@ -44,7 +44,7 @@ Files must be named one of two ways to be included.
 * *-global-variables.scss - Included at the top of the consolidated file alphabetically.
 * *-vars.scss - Included alphabetically after the global variables
 
-#### Using the partial template
+##### Using the partial template
 
 Add the partial to your ```/layouts/_default/baseof.html``` template. Anywhere will do. This partial does not output any markup.
 ```
