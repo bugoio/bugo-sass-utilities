@@ -35,6 +35,17 @@ module:
 
 #### bugo-sass-variables
 
+##### Overview
+
+This template consolidates all SASS variables stored in your project's assets folders. Since this runs at build time it uses Hugo's "consoloidated" assets directory. 
+
+Files must be named one of two ways to be included.
+
+* *-global-variables.scss - Included at the top of the consolidated file alphabetically.
+* *-vars.scss - Included alphabetically after the global variables
+
+#### Using the partial template
+
 Add the partial to your ```/layouts/_default/baseof.html``` template. Anywhere will do. This partial does not output any markup.
 ```
 {{ partial "bugo-sass-utilities" . }}
