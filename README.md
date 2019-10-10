@@ -6,7 +6,7 @@ A Hugo Module that contains Bugo specific Sass functions, mixins &amp; variables
 
 Before starting check the list below:
 
-* Your Hugo project must use Hugo v0.58.3
+* Your Hugo project must use Hugo v0.58.3 or greater
 * Your Hugo project must be in a git repository
 * Your Huog project must be a Hugo Module
 
