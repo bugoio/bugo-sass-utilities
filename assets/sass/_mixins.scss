@@ -165,7 +165,7 @@
 }
 
 @mixin heading-size( $el, $heading, $multiplier: 1 ) {
-  #{$el} {
+  #{$el},.#{$el} {
     @each $breakpoint, $value in $heading {
       @include respond-to( $breakpoint ){
         @include ms-respond( font-size, $value * $multiplier );
