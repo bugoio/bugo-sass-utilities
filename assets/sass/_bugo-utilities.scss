@@ -1,3 +1,4 @@
+@debug "Loading Bugo Sass Utilities";
 @import "vendors/mathsass/math";
 @import "vendors/modularscale/modularscale";
 
@@ -34,6 +35,150 @@ $container-max-widths: (
     xxl: {{ .Site.Params.breakpoints.xxl.mw | default "1400px" }},
     xxxl: {{ .Site.Params.breakpoints.xxxl.mw | default "2200px" }}
 ) !default;
+
+$widths: 20,25,33,50,66,75,90,100;
+
+/**
+ * SPACING CLASSES
+ **/
+
+$spacing-ratios: (
+    0: 0,
+    1: 1,
+    2: 1.25,
+    3: 1.5,
+    4: 1.75,
+    5: 2,
+    6: 2.25
+);
+
+@each $key, $mod in $spacing-ratios {
+  @debug $key,$mod;
+
+  .p-#{$key} {
+    @debug "padding",$mod,type-of($mod);
+    padding: ms($mod) !important;
+  }
+
+  .m-#{$key} {
+    margin: 1;
+  }
+}
+
+
+/**
+ * BREAKPOINT DIPLAY HELPERS
+ **/
+
+ .dnone {
+    display: none !important;
+  }
+
+  .dblock {
+    display: block !important;
+  }
+
+  .dflex {
+    display: flex !important;
+  }
+
+  .dgrid {
+    display: grid !important;
+  }
+
+  .dinline {
+    display: inline !important;
+  }
+
+  @each $key, $bp in $breakpoints {
+   .#{$key}-dnone{
+       @include respond-to($key){
+           display: none !important;
+       }
+   }
+
+   .#{$key}-dblock{
+       @include respond-to($key){
+           display: block !important;
+       }
+   }
+
+   .#{$key}-dflex{
+       @include respond-to($key){
+           display: flex !important;
+       }
+   }
+
+   .#{$key}-dgrid{
+       @include respond-to($key){
+           display: grid !important;
+       }
+   }
+
+   .#{$key}-dinline{
+       @include respond-to($key){
+           display: inline !important;
+       }
+   }
+  }
+
+  /**
+   * BREAKPOINT FLEX HELPERS
+   **/
+
+   .flex-wrap {
+     flex-wrap: wrap !important;
+   }
+
+   .flex-nowrap {
+    flex-wrap: nowrap !important;
+   }
+
+  @each $w in $widths {
+        .flex-#{$w} {
+            flex-basis: $w + 0% !important;
+        }
+   }
+
+  /**
+   * BREAKPOINT WIDTH HELPERS
+   **/
+
+   @each $w in $widths {
+    .w-#{$w} {
+        width:  $w + 0%;
+    }
+    @each $key, $bp in $breakpoints {
+        @include respond-to($key){
+            .w-#{$key}-#{$w}{
+                width: $w + 0%;
+                @each $hkey, $hbp in $breakpoints {
+                    &[class*=#{$hkey}-#{$w}] {
+                        width: $w + 0%;
+                    }
+                }
+            }
+        }
+   }
+
+}
+
+   /**
+   * BREAKPOINT MAX-WIDTH HELPERS
+   **/
+
+   @each $w in $widths {
+    .maxwidth-#{$w} {
+        max-width:  $w + 0% !important;
+    }
+    @each $key, $bp in $breakpoints {
+        .maxwidth-#{$key}-#{$w} {
+            @include respond-to($key){
+                max-width: $w + 0% !important;
+            }
+        }
+   }
+}
 
 
 
@@ -111,3 +256,4 @@ $danger:        {{ .Site.Params.theme_colors.danger | default "#dc3545" }};
 {{ end }}
 
 @import "bugo-global-variables";
+

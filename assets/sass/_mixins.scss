@@ -20,6 +20,7 @@
 }
 
 @mixin set-margin($top:false,$right:false,$bottom:false,$left:false){
+  // @debug "set-margin",$top,$right,$bottom,$left;
   @if $top != false and is_numeric( $top ){
     @include ms-respond( margin-top, $top );
   } @else {
@@ -43,9 +44,12 @@
 }
 
 @mixin set-padding($top:false,$right:false,$bottom:false,$left:false){
+  @warn "set-padding",type-of($top),$top,type-of($right),$right,type-of($bottom),$bottom,type-of($left),$left;
   @if $top != false and is_numeric( $top ){
+    @debug "settign top",$top;
     @include ms-respond( padding-top, $top );
   } @else {
+    @debug "settign top nil";
     padding-top: 0;
   }
   @if $right != false and is_numeric( $right ){
