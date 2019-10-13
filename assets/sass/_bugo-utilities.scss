@@ -53,10 +53,7 @@ $spacing-ratios: (
 );
 
 @each $key, $mod in $spacing-ratios {
-  @debug $key,$mod;
-
   .p-#{$key} {
-    @debug "padding",$mod,type-of($mod);
     padding: ms($mod) !important;
   }
 
