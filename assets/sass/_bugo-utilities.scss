@@ -53,9 +53,31 @@ $spacing-ratios: (
 );
 
 @each $key, $mod in $spacing-ratios {
+  .p-none{
+    padding: 0;
+  }
+
+  .px-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .py-none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+
   .p-#{$key} {
     padding: ms($mod) !important;
   }
+
+  .px-#{$key} {
+    padding-left: ms($mod) !important;
+    padding-right: ms($mod) !important;
+  }
+
+  .py
 
   .m-#{$key} {
     margin: 1;
