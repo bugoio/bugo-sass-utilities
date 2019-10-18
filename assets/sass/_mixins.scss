@@ -21,22 +21,26 @@
 
 @mixin set-margin($top:false,$right:false,$bottom:false,$left:false){
   @if $top != false and is_numeric( $top ){
-    @include ms-respond( margin-top, $top );
+    // @include ms-respond( margin-top, $top );
+    margin-top: ms($top);
   } @else {
     margin-top: 0;
   }
   @if $right != false and is_numeric( $right ){
-    @include ms-respond( margin-right, $right );
+    // @include ms-respond( margin-right, $right );
+    margin-right: ms($right);
   } @else {
     margin-right: 0;
   }
   @if $bottom != false and is_numeric( $bottom ){
-    @include ms-respond( margin-bottom, $bottom );
+    // @include ms-respond( margin-bottom, $bottom );
+    margin-bottom: ms($bottom);
   } @else {
     margin-bottom: 0;
   }
   @if $left != false and is_numeric( $left ){
-    @include ms-respond( margin-left, $left );
+    // @include ms-respond( margin-left, $left );
+    margin-left: ms($left);
   } @else {
     margin-left: 0;
   }
@@ -44,22 +48,26 @@
 
 @mixin set-padding($top:false,$right:false,$bottom:false,$left:false){
   @if $top != false and is_numeric( $top ){
-    @include ms-respond( padding-top, $top );
+    // @include ms-respond( padding-top, $top );
+    padding-top: ms($top);
   } @else {
     padding-top: 0;
   }
   @if $right != false and is_numeric( $right ){
-    @include ms-respond( padding-right, $right );
+    // @include ms-respond( padding-right, $right );
+    padding-right: ms($right);
   } @else {
     padding-right: 0;
   }
   @if $bottom != false and is_numeric( $bottom ){
-    @include ms-respond( padding-bottom, $bottom );
+    // @include ms-respond( padding-bottom, $bottom );
+    padding-bottom: ms($bottom);
   } @else {
     padding-bottom: 0;
   }
   @if $left != false and is_numeric( $left ){
-    @include ms-respond( padding-left, $left );
+    // @include ms-respond( padding-left, $left );
+    padding-left: ms($left);
   } @else {
     padding-left: 0;
   }
@@ -166,6 +174,10 @@
     @each $breakpoint, $value in $heading {
       @include respond-to( $breakpoint ){
         @include ms-respond( font-size, $value * $multiplier );
+
+        small {
+          @include ms-respond( font-size, $value * $multiplier - 0.5);
+        }
       }
     }
   }
