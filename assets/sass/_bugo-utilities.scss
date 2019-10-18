@@ -342,5 +342,3 @@ $danger:        {{ .Site.Params.theme_colors.danger | default "#dc3545" }};
 {{ end }}
 
 @import "bugo-global-variables";
-
-@import "modal-window";
