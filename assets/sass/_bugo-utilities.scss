@@ -54,7 +54,7 @@ $spacing-ratios: (
 
 @each $key, $mod in $spacing-ratios {
   .p-none{
-    padding: 0;
+    padding: 0 !important;
   }
 
   .px-none {
@@ -67,9 +67,24 @@ $spacing-ratios: (
     padding-bottom: 0;
   }
 
-
   .p-#{$key} {
-    padding: ms($mod) !important;
+    padding: ms($mod);
+  }
+
+  .pt-#{$key} {
+    padding-top: ms($mod);
+  }
+
+  .pr-#{$key} {
+    padding-right: ms($mod);
+  }
+
+  .pb-#{$key} {
+    padding-bottom: ms($mod);
+  }
+
+  .pl-#{$key} {
+    padding-left: ms($mod);
   }
 
   .px-#{$key} {
@@ -77,11 +92,55 @@ $spacing-ratios: (
     padding-right: ms($mod) !important;
   }
 
-  .py
+  .py-#{$key} {
+    padding-top: ms($mod) !important;
+    padding-bottom: ms($mod) !important;
+  }
+
+  .m-none{
+    margin: 0 !important;
+  }
+
+  .mx-none {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .my-none {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
   .m-#{$key} {
-    margin: 1;
+    margin: ms($mod);
   }
+
+  .mt-#{$key} {
+    margin-top: ms($mod);
+  }
+
+  .mr-#{$key} {
+    margin-right: ms($mod);
+  }
+
+  .mb-#{$key} {
+    margin-bottom: ms($mod);
+  }
+
+  .ml-#{$key} {
+    margin-left: ms($mod);
+  }
+
+  .mx-#{$key} {
+    padding-left: ms($mod) !important;
+    padding-right: ms($mod) !important;
+  }
+
+  .my-#{$key} {
+    padding-top: ms($mod) !important;
+    padding-bottom: ms($mod) !important;
+  }
+
 }
 
 
@@ -151,6 +210,14 @@ $spacing-ratios: (
 
    .flex-nowrap {
     flex-wrap: nowrap !important;
+   }
+
+   .space-between {
+     justify-content: space-between;
+   }
+
+   .align-top {
+     align-items: flex-start;
    }
 
   @each $w in $widths {
@@ -276,3 +343,4 @@ $danger:        {{ .Site.Params.theme_colors.danger | default "#dc3545" }};
 
 @import "bugo-global-variables";
 
+@import "modal-window";
