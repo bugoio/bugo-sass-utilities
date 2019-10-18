@@ -42,6 +42,13 @@ $link-text-color-dark: $primary;
   .text-#{$name}{
     color: $color !important;
   }
+
+  .fill-#{$name}{
+    fill: $color !important;
+    svg {
+      fill: $color !important;
+    }
+  }
 }
 
 @each $fname, $fcolor in $theme-colors {
@@ -64,4 +71,9 @@ $link-text-color-dark: $primary;
   @each $name, $color in $theme-colors {
       --#{$name}: #{$color};
   }
+}
+
+.transparent {
+  background-color: transparent !important;
+  background-image: none !important;
 }
