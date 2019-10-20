@@ -54,18 +54,26 @@ $spacing-ratios: (
 );
 
 @each $key, $mod in $spacing-ratios {
-  .p-none{
-    padding: 0 !important;
+  .m-none{
+    margin: 0 !important;
   }
 
   .px-none {
-    padding-left: 0;
-    padding-right: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .py-none {
-    padding-top: 0;
-    padding-bottom: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .pt-none {
+    margin-top: 0 !important;
+  }
+
+  .pb-none {
+    margin-bottom: 0 !important;
   }
 
   .p-#{$key} {
@@ -103,13 +111,21 @@ $spacing-ratios: (
   }
 
   .mx-none {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .my-none {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .mt-none {
+    margin-top: 0 !important;
+  }
+
+  .mb-none {
+    margin-bottom: 0 !important;
   }
 
   .m-#{$key} {
