@@ -331,18 +331,18 @@ $spacing-ratios: (
  *
  **/
 
-$primary:       {{ .Site.Params.theme_colors.primary | default "red" }};
-$secondary:     {{ .Site.Params.theme_colors.secondary | default "#536F48" }};
-$accent-1:      {{ .Site.Params.theme_colors.accent_1 | default "#FFDE2F" }};
-$accent-2:      {{ .Site.Params.theme_colors.accent_2 | default "#5F336A" }};
-$light:         {{ .Site.Params.theme_colors.light | default "#FFF5E7" }};
-$dark:          {{ .Site.Params.theme_colors.dark | default "#5B5551" }};
-$white:         {{ .Site.Params.theme_colors.white | default "#FFFCF6" }};
-$black:         {{ .Site.Params.theme_colors.black | default "#252524" }};
-$success:       {{ .Site.Params.theme_colors.success | default "#28a745" }};
-$info:          {{ .Site.Params.theme_colors.info | default "#17a2b8" }};
-$warning:       {{ .Site.Params.theme_colors.warning | default "#ffc107" }};
-$danger:        {{ .Site.Params.theme_colors.danger | default "#dc3545" }};
+$primary:       {{ .Site.Params.themeColors.primary | default "red" }};
+$secondary:     {{ .Site.Params.themeColors.secondary | default "#536F48" }};
+$accent1:      {{ .Site.Params.themeColors.accent1 | default "#FFDE2F" }};
+$accent2:      {{ .Site.Params.themeColors.accent2 | default "#5F336A" }};
+$light:         {{ .Site.Params.themeColors.light | default "#FFF5E7" }};
+$dark:          {{ .Site.Params.themeColors.dark | default "#5B5551" }};
+$white:         {{ .Site.Params.themeColors.white | default "#FFFCF6" }};
+$black:         {{ .Site.Params.themeColors.black | default "#252524" }};
+$success:       {{ .Site.Params.themeColors.success | default "#28a745" }};
+$info:          {{ .Site.Params.themeColors.info | default "#17a2b8" }};
+$warning:       {{ .Site.Params.themeColors.warning | default "#ffc107" }};
+$danger:        {{ .Site.Params.themeColors.danger | default "#dc3545" }};
 
 
 @import "colors";
