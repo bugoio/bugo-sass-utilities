@@ -3,8 +3,8 @@
 $theme-colors: (
   primary: $primary,
   secondary: $secondary,
-  accent-1: $accent-1,
-  accent-2: $accent-2,
+  accent1: $accent1,
+  accent2: $accent2,
   light: $light,
   dark: $dark,
   white: $white,
@@ -18,8 +18,8 @@ $theme-colors: (
 $dark-colors: (
   primary: $primary,
   secondary: $secondary,
-  accent-1: $accent-1,
-  accent-2: $accent-2,
+  accent1: $accent1,
+  accent2: $accent2,
   light: $light,
   dark: $dark,
   white: $white,
@@ -31,7 +31,7 @@ $yiq-contrasted-threshold: 150 !default;
 /* Text color */
 $base-text-color: $dark;
 $base-text-color-dark: $light;
-$link-text-color: darken($accent-2, 20%);
+$link-text-color: darken($accent2, 20%);
 $link-text-color-dark: $primary;
 
 @each $name, $color in $theme-colors {
