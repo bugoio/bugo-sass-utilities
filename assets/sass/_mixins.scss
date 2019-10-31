@@ -191,3 +191,13 @@
   }
 }
 
+@mixin make-columns($ratio: $global-padding){
+  display: flex;
+  margin-right: -#{ms($ratio)};
+  margin-left: -#{ms($ratio)};
+
+  > * {
+    padding-right: ms($ratio);
+    padding-left: ms($ratio);
+  }
+}
