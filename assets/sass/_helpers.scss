@@ -7,9 +7,6 @@
   li {
     list-style-type: none;
     @include ms-respond( margin-right, 1 );
-
-    a {
-    }
   }
 }
 

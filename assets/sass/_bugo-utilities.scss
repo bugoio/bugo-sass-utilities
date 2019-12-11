@@ -53,109 +53,110 @@ $spacing-ratios: (
     6: 2.25
 );
 
+.p-none{
+  padding: 0 !important;
+}
+
+.px-none {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.py-none {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.pt-none {
+  padding-top: 0 !important;
+}
+
+.pb-none {
+  padding-bottom: 0 !important;
+}
+
+.m-none{
+  margin: 0 !important;
+}
+
+.mx-none {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.my-none {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.mt-none {
+  margin-top: 0 !important;
+}
+
+.mb-none {
+  margin-bottom: 0 !important;
+}
+
 @each $key, $mod in $spacing-ratios {
-  .m-none{
-    margin: 0 !important;
-  }
-
-  .px-none {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .py-none {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .pt-none {
-    margin-top: 0 !important;
-  }
-
-  .pb-none {
-    margin-bottom: 0 !important;
-  }
 
   .p-#{$key} {
-    padding: ms($mod);
+    @include ms-respond(padding,$mod);
   }
 
   .pt-#{$key} {
-    padding-top: ms($mod);
+    @include ms-respond(padding-top,$mod);
   }
 
   .pr-#{$key} {
-    padding-right: ms($mod);
+    @include ms-respond(padding-right,$mod);
   }
 
   .pb-#{$key} {
-    padding-bottom: ms($mod);
+    @include ms-respond(padding-bottom,$mod);
   }
 
   .pl-#{$key} {
-    padding-left: ms($mod);
+    @include ms-respond(padding-left,$mod);
   }
 
   .px-#{$key} {
-    padding-left: ms($mod) !important;
-    padding-right: ms($mod) !important;
+    @include ms-respond(padding-left,$mod,null,true);
+    @include ms-respond(padding-right,$mod,null,true);
   }
 
   .py-#{$key} {
-    padding-top: ms($mod) !important;
-    padding-bottom: ms($mod) !important;
-  }
-
-  .m-none{
-    margin: 0 !important;
-  }
-
-  .mx-none {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .my-none {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .mt-none {
-    margin-top: 0 !important;
-  }
-
-  .mb-none {
-    margin-bottom: 0 !important;
+    @include ms-respond(padding-top,$mod,null,true);
+    @include ms-respond(padding-bottom,$mod,null,true);
   }
 
   .m-#{$key} {
-    margin: ms($mod);
+    @include ms-respond(margin,$mod);
   }
 
   .mt-#{$key} {
-    margin-top: ms($mod);
+    @include ms-respond(margin-top,$mod);
   }
 
   .mr-#{$key} {
-    margin-right: ms($mod);
+    @include ms-respond(margin-right,$mod);
   }
 
   .mb-#{$key} {
-    margin-bottom: ms($mod);
+    @include ms-respond(margin-bottom,$mod);
   }
 
   .ml-#{$key} {
-    margin-left: ms($mod);
+    @include ms-respond(margin-left,$mod);
   }
 
   .mx-#{$key} {
-    padding-left: ms($mod) !important;
-    padding-right: ms($mod) !important;
+    @include ms-respond(margin-left,$mod,null,true);
+    @include ms-respond(margin-right,$mod,null,true);
   }
 
   .my-#{$key} {
-    padding-top: ms($mod) !important;
-    padding-bottom: ms($mod) !important;
+    @include ms-respond(margin-top,$mod,null,true);
+    @include ms-respond(margin-bottom,$mod,null,true);
   }
 
 }
@@ -233,6 +234,22 @@ $spacing-ratios: (
      justify-content: space-between;
    }
 
+   .justify-center {
+     justify-content: center;
+   }
+
+   .justify-start {
+     justify-content: flex-start;
+   }
+
+   .justify-end {
+     justify-content: flex-end;
+   }
+
+   .justify-between {
+     justify-content: space-between;
+   }
+
    .align-top {
      align-items: flex-start;
    }
@@ -293,6 +310,7 @@ $spacing-ratios: (
  * https://github.com/modularscale/modularscale-sass
  *
  **/
+
  $modularscale: (
     {{ .Site.Params.breakpoints.xs.bp }}:(
         base: {{ .Site.Params.breakpoints.xs.base }},
@@ -359,3 +377,4 @@ $danger:        {{ .Site.Params.themeColors.danger | default "#dc3545" }};
 {{ end }}
 
 @import "bugo-global-variables";
+@import "custom";

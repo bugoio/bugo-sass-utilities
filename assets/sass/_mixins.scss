@@ -21,26 +21,22 @@
 
 @mixin set-margin($top:false,$right:false,$bottom:false,$left:false){
   @if $top != false and is_numeric( $top ){
-    // @include ms-respond( margin-top, $top );
-    margin-top: ms($top);
+    @include ms-respond( margin-top, $top );
   } @else {
     margin-top: 0;
   }
   @if $right != false and is_numeric( $right ){
-    // @include ms-respond( margin-right, $right );
-    margin-right: ms($right);
+    @include ms-respond( margin-right, $right );
   } @else {
     margin-right: 0;
   }
   @if $bottom != false and is_numeric( $bottom ){
-    // @include ms-respond( margin-bottom, $bottom );
-    margin-bottom: ms($bottom);
+    @include ms-respond( margin-bottom, $bottom );
   } @else {
     margin-bottom: 0;
   }
   @if $left != false and is_numeric( $left ){
-    // @include ms-respond( margin-left, $left );
-    margin-left: ms($left);
+    @include ms-respond( margin-left, $left );
   } @else {
     margin-left: 0;
   }
@@ -48,26 +44,22 @@
 
 @mixin set-padding($top:false,$right:false,$bottom:false,$left:false){
   @if $top != false and is_numeric( $top ){
-    // @include ms-respond( padding-top, $top );
-    padding-top: ms($top);
+    @include ms-respond( padding-top, $top );
   } @else {
     padding-top: 0;
   }
   @if $right != false and is_numeric( $right ){
-    // @include ms-respond( padding-right, $right );
-    padding-right: ms($right);
+    @include ms-respond( padding-right, $right );
   } @else {
     padding-right: 0;
   }
   @if $bottom != false and is_numeric( $bottom ){
-    // @include ms-respond( padding-bottom, $bottom );
-    padding-bottom: ms($bottom);
+    @include ms-respond( padding-bottom, $bottom );
   } @else {
     padding-bottom: 0;
   }
   @if $left != false and is_numeric( $left ){
-    // @include ms-respond( padding-left, $left );
-    padding-left: ms($left);
+    @include ms-respond( padding-left, $left );
   } @else {
     padding-left: 0;
   }
@@ -191,13 +183,36 @@
   }
 }
 
-@mixin make-columns($ratio: $global-padding){
+@mixin make-columns($ratio: $global-padding, $cols: 3){
   display: flex;
-  margin-right: -#{ms($ratio)};
-  margin-left: -#{ms($ratio)};
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  // @include ms-respond(--marginX,$ratio/2);
+  // margin-right: calc(var(--marginX) * -1);
+  // margin-left: calc(var(--marginX) * -1);
+
+  @include respond-to(md){
+    flex-wrap: nowrap;
+  }
 
   > * {
-    padding-right: ms($ratio);
-    padding-left: ms($ratio);
+    @include ms-respond(--marginX,$ratio);
+    // margin-right: calc(var(--marginX) * -1);
+    // margin-left: calc(var(--marginX) * -1);
+    // flex: 1 1 calc();
+    // padding-left: calc(var(--marginX)/2);
+    // padding-right: calc(var(--marginX)/2);
+    box-sizing: border-box;
+    @include ms-respond(--padding,$ratio);
+    --calcPadding: calc( 100%/#{$cols} - var(--padding));
+    flex: 0 0  var(--calcPadding);
   }
+}
+
+@mixin truncate-container($lines: 4){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
 }
