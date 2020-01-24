@@ -37,6 +37,46 @@ $container-max-widths: (
     xxxl: {{ .Site.Params.breakpoints.xxxl.mw | default "2200px" }}
 ) !default;
 
+/**
+ *
+ * Modular Scale using the global breakpoints
+ *
+ * https://www.modularscale.com
+ * https://github.com/modularscale/modularscale-sass
+ *
+ **/
+
+$modularscale: (
+  {{ .Site.Params.breakpoints.xs.bp }}:(
+      base: {{ .Site.Params.breakpoints.xs.base }},
+      ratio:  {{ .Site.Params.breakpoints.xs.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.sm.bp }}:(
+      base: {{ .Site.Params.breakpoints.sm.base }},
+      ratio:  {{ .Site.Params.breakpoints.sm.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.md.bp }}:(
+      base: {{ .Site.Params.breakpoints.md.base }},
+      ratio:  {{ .Site.Params.breakpoints.md.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.lg.bp }}:(
+      base: {{ .Site.Params.breakpoints.lg.base }},
+      ratio:  {{ .Site.Params.breakpoints.lg.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.xl.bp }}:(
+      base: {{ .Site.Params.breakpoints.xl.base }},
+      ratio:  {{ .Site.Params.breakpoints.xl.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.xxl.bp }}:(
+      base: {{ .Site.Params.breakpoints.xxl.base }},
+      ratio:  {{ .Site.Params.breakpoints.xxl.ratio }}
+  ),
+  {{ .Site.Params.breakpoints.xxxl.bp }}:(
+      base: {{ .Site.Params.breakpoints.xxxl.base }},
+      ratio:  {{ .Site.Params.breakpoints.xxxl.ratio }}
+  ),
+ );
+
 $widths: 20,25,33,50,66,75,90,100;
 
 /**
@@ -51,7 +91,7 @@ $spacing-ratios: (
     4: 1.75,
     5: 2,
     6: 2.25
-);
+) !default;
 
 .p-none{
   padding: 0 !important;
@@ -84,6 +124,11 @@ $spacing-ratios: (
   margin-right: 0 !important;
 }
 
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .my-none {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -97,70 +142,123 @@ $spacing-ratios: (
   margin-bottom: 0 !important;
 }
 
-@each $key, $mod in $spacing-ratios {
-
-  .p-#{$key} {
-    @include ms-respond(padding,$mod);
-  }
-
-  .pt-#{$key} {
-    @include ms-respond(padding-top,$mod);
-  }
-
-  .pr-#{$key} {
-    @include ms-respond(padding-right,$mod);
-  }
-
-  .pb-#{$key} {
-    @include ms-respond(padding-bottom,$mod);
-  }
-
-  .pl-#{$key} {
-    @include ms-respond(padding-left,$mod);
-  }
-
-  .px-#{$key} {
-    @include ms-respond(padding-left,$mod,null,true);
-    @include ms-respond(padding-right,$mod,null,true);
-  }
-
-  .py-#{$key} {
-    @include ms-respond(padding-top,$mod,null,true);
-    @include ms-respond(padding-bottom,$mod,null,true);
-  }
-
-  .m-#{$key} {
-    @include ms-respond(margin,$mod);
-  }
-
-  .mt-#{$key} {
-    @include ms-respond(margin-top,$mod);
-  }
-
-  .mr-#{$key} {
-    @include ms-respond(margin-right,$mod);
-  }
-
-  .mb-#{$key} {
-    @include ms-respond(margin-bottom,$mod);
-  }
-
-  .ml-#{$key} {
-    @include ms-respond(margin-left,$mod);
-  }
-
-  .mx-#{$key} {
-    @include ms-respond(margin-left,$mod,null,true);
-    @include ms-respond(margin-right,$mod,null,true);
-  }
-
-  .my-#{$key} {
-    @include ms-respond(margin-top,$mod,null,true);
-    @include ms-respond(margin-bottom,$mod,null,true);
-  }
-
+.p-0 {
+  @include ms-respond(padding,0,$modularscale,true);
 }
 
+.pt-0 {
+  @include ms-respond(padding-top,0,$modularscale,true);
+}
+
+.pr-0 {
+  @include ms-respond(padding-right,0,$modularscale,true);
+}
+
+.pb-0 {
+  @include ms-respond(padding-bottom,0,$modularscale,true);
+}
+
+.pl-0 {
+  @include ms-respond(padding-left,0,$modularscale,true);
+}
+
+.px-0 {
+  @include ms-respond(padding-right,0,$modularscale,true);
+  @include ms-respond(padding-left,0,$modularscale,true);
+}
+
+.m-0 {
+  @include ms-respond(margin,0,$modularscale,true);
+}
+
+.mt-0 {
+  @include ms-respond(margin-top,0,$modularscale,true);
+}
+
+.mr-0 {
+  @include ms-respond(margin-right,0,$modularscale,true);
+}
+
+.mb-0 {
+  @include ms-respond(margin-bottom,0,$modularscale,true);
+}
+
+.ml-0 {
+  @include ms-respond(margin-left,0,$modularscale,true);
+}
+
+.mx-0 {
+  @include ms-respond(margin-right,0,$modularscale,true);
+  @include ms-respond(margin-left,0,$modularscale,true);
+}
+
+.my-0 {
+  @include ms-respond(margin-top,0,$modularscale,true);
+  @include ms-respond(margin-bottom,0,$modularscale,true);
+}
+
+  @for $i from 1 through 10 {
+   /** looping #{$i} **/
+  .p-#{$i} {
+    @include ms-respond(padding,$i,$modularscale,true);
+  }
+
+  .pt-#{$i} {
+    @include ms-respond(padding-top,$i,$modularscale,true);
+  }
+
+  .pr-#{$i} {
+    @include ms-respond(padding-right,$i,$modularscale,true);
+  }
+
+  .pb-#{$i} {
+    @include ms-respond(padding-bottom,$i,$modularscale,true);
+  }
+
+  .pl-#{$i} {
+    @include ms-respond(padding-left,$i,$modularscale,true);
+  }
+
+  .px-#{$i} {
+    @include ms-respond(padding-left,$i,$modularscale,true);
+    @include ms-respond(padding-right,$i,$modularscale,true);
+  }
+
+  .py-#{$i} {
+    @include ms-respond(padding-top,$i,$modularscale,true);
+    @include ms-respond(padding-bottom,$i,$modularscale,true);
+  }
+
+  .m-#{$i} {
+    @include ms-respond(margin,$i,$modularscale,true);
+  }
+
+  .mt-#{$i} {
+    @include ms-respond(margin-top,$i,$modularscale,true);
+  }
+
+  .mr-#{$i} {
+    @include ms-respond(margin-right,$i,$modularscale,true);
+  }
+
+  .mb-#{$i} {
+    @include ms-respond(margin-bottom,$i,$modularscale,true);
+  }
+
+  .ml-#{$i} {
+    @include ms-respond(margin-left,$i,$modularscale,true);
+  }
+
+  .mx-#{$i} {
+    @include ms-respond(margin-left,$i,$modularscale,true);
+    @include ms-respond(margin-right,$i,$modularscale,true);
+  }
+
+  .my-#{$i} {
+    @include ms-respond(margin-top,$i,$modularscale,true);
+    @include ms-respond(margin-bottom,$i,$modularscale,true);
+  }
+}
 
 /**
  * BREAKPOINT DIPLAY HELPERS
@@ -184,6 +282,10 @@ $spacing-ratios: (
 
   .dinline {
     display: inline !important;
+  }
+
+  .dinline-block {
+    display: inline-block !important;
   }
 
   @each $key, $bp in $breakpoints {
@@ -254,34 +356,55 @@ $spacing-ratios: (
      align-items: flex-start;
    }
 
-  @each $w in $widths {
-        .flex-#{$w} {
-            flex-basis: $w + 0% !important;
-        }
+   .align-center {
+     align-items: center;
    }
 
   /**
    * BREAKPOINT WIDTH HELPERS
    **/
 
-   @each $w in $widths {
-    .w-#{$w} {
-        width:  $w + 0%;
-    }
-    @each $key, $bp in $breakpoints {
-        @include respond-to($key){
-            .w-#{$key}-#{$w}{
-                width: $w + 0%;
-                @each $hkey, $hbp in $breakpoints {
-                    &[class*=#{$hkey}-#{$w}] {
-                        width: $w + 0%;
-                    }
-                }
-            }
-        }
-   }
+  .full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-}
+  .w-auto {
+    width: auto !important;
+  }
+
+  @for $w from 1 through 100  {
+    .w-#{$w} {
+        width: $w + 0% !important;
+    }
+
+    @each $key, $bp in $breakpoints {
+      .w-#{$key}-#{$w} {
+        @include respond-to($key){
+            width: $w + 0% !important;
+        }
+      }
+    }
+  }
+
+  @for $w from 1 through 100  {
+    .flex-#{$w} {
+      flex: 0 0 $w + 0%;
+    }
+
+  }
+
+  @each $key, $bp in $breakpoints {
+    @include respond-to($key){ 
+      @for $w from 1 through 100  {
+        .flex-#{$key}-#{$w} {
+          flex: 0 0 $w + 0% !important;
+        }
+      }
+    }
+  }
 
    /**
    * BREAKPOINT MAX-WIDTH HELPERS
@@ -302,45 +425,7 @@ $spacing-ratios: (
 
 
 
-/**
- *
- * Modular Scale using the global breakpoints
- *
- * https://www.modularscale.com
- * https://github.com/modularscale/modularscale-sass
- *
- **/
 
- $modularscale: (
-    {{ .Site.Params.breakpoints.xs.bp }}:(
-        base: {{ .Site.Params.breakpoints.xs.base }},
-        ratio:  {{ .Site.Params.breakpoints.xs.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.sm.bp }}:(
-        base: {{ .Site.Params.breakpoints.sm.base }},
-        ratio:  {{ .Site.Params.breakpoints.sm.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.md.bp }}:(
-        base: {{ .Site.Params.breakpoints.md.base }},
-        ratio:  {{ .Site.Params.breakpoints.md.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.lg.bp }}:(
-        base: {{ .Site.Params.breakpoints.lg.base }},
-        ratio:  {{ .Site.Params.breakpoints.lg.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.xl.bp }}:(
-        base: {{ .Site.Params.breakpoints.xl.base }},
-        ratio:  {{ .Site.Params.breakpoints.xl.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.xxl.bp }}:(
-        base: {{ .Site.Params.breakpoints.xxl.base }},
-        ratio:  {{ .Site.Params.breakpoints.xxl.ratio }}
-    ),
-    {{ .Site.Params.breakpoints.xxxl.bp }}:(
-        base: {{ .Site.Params.breakpoints.xxxl.base }},
-        ratio:  {{ .Site.Params.breakpoints.xxxl.ratio }}
-    ),
-   );
 
 /**
  *
