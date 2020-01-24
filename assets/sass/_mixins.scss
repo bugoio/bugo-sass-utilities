@@ -198,21 +198,20 @@
 
   > * {
     @include ms-respond(--marginX,$ratio);
-    // margin-right: calc(var(--marginX) * -1);
-    // margin-left: calc(var(--marginX) * -1);
-    // flex: 1 1 calc();
-    // padding-left: calc(var(--marginX)/2);
-    // padding-right: calc(var(--marginX)/2);
+    @include ms-respond(margin-left,$ratio);
+    @include ms-respond(margin-right,$ratio);
     box-sizing: border-box;
-    @include ms-respond(--padding,$ratio);
-    --calcPadding: calc( 100%/#{$cols} - var(--padding));
-    flex: 0 0  var(--calcPadding);
   }
 }
 
-@mixin truncate-container($lines: 4){
+@mixin truncate-container($lines: 4,$line-height: 1.3){
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $lines;
   overflow: hidden;
+  line-height: $line-height;
+}
+
+@mixin line-clamp($lines: 4,$line-height: 1.3){
+  @include truncate-container($lines,$line-height);
 }
