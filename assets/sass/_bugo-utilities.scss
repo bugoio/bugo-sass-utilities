@@ -19,7 +19,7 @@
  /* Breakpoints */
 $breakpoints: (
     xs: {{ .Site.Params.breakpoints.xs.bp | default "0" }},
-    sm: {{ .Site.Params.breakpoints.sm.bp | default "576px" }},
+    sm: {{ .Site.Params.breakpoints.sm.bp | default "400px" }},
     md: {{ .Site.Params.breakpoints.md.bp | default "768px" }},
     lg: {{ .Site.Params.breakpoints.lg.bp | default "992px" }},
     xl: {{ .Site.Params.breakpoints.xl.bp | default "1200px" }},
